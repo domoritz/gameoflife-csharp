@@ -15,7 +15,9 @@ namespace GameOfLife
             Read(board);
         }
 
-        private void Read(string board) {
+        // Read the string to initialize the board 
+        private void Read(string board)
+        {
             int y = 0;
             foreach (var line in board.Split('\n'))
             {
@@ -32,16 +34,19 @@ namespace GameOfLife
             }
         }
 
+        // Return true if the cell is alive
         public bool IsAlive(Cell cell)
         {
             return this.alive.Contains(cell);
         }
 
+        // Add a cell to the internal hashmap that represents the board
         public void AddCell(int x, int y)
         {
             this.alive.Add(new Cell(x, y));
         }
 
+        // Return a disctionary that for each cell (that has neighbors) tells us how many neighbors it has.
         private Dictionary<Cell, int> NeighborsCount()
         {
             var counts = new Dictionary<Cell, int>();
@@ -66,10 +71,11 @@ namespace GameOfLife
             return counts;
         }
 
+        // Advance the board
         public void Step()
         {
             var newAlive = new HashSet<Cell>();
-            
+
             foreach (var entry in this.NeighborsCount())
             {
                 if (entry.Value == 3 || this.IsAlive(entry.Key) && entry.Value == 2)
@@ -81,6 +87,7 @@ namespace GameOfLife
             this.alive = newAlive;
         }
 
+        // Rerturn a string representation of the board
         public override string ToString()
         {
             const int padding = 0;

@@ -2,7 +2,7 @@
 
 namespace GameOfLife
 {
-    public class Cell: System.Object
+    public class Cell : System.Object
     {
         public int x { get; }
         public int y { get; }
@@ -13,6 +13,7 @@ namespace GameOfLife
             this.y = y;
         }
 
+        // Return a list list of all neighbors of this cell
         public List<Cell> Neighbors()
         {
             var neighbors = new List<Cell>();

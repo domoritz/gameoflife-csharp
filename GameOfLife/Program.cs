@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameOfLife
@@ -10,21 +11,15 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
-
             var board = new Board("......X.\nXX......\n.X...XXX");
-            //var board = new Board("..X\nX.X\n.XX");
 
-            Console.WriteLine("Start:");
-            Console.WriteLine(board);
-            board.Step();
-
-            Console.WriteLine("Next:");
-            Console.WriteLine(board);
-            board.Step();
-
-            Console.WriteLine("Next:");
-            Console.WriteLine(board);
+            for (int i = 0; i < 130; i++)
+            {
+                board.Step();
+                Console.Clear();
+                Console.Write(board);
+                Thread.Sleep(100);
+            }
         }
     }
 }
